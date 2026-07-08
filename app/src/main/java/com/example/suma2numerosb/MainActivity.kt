@@ -2,18 +2,23 @@ package com.example.suma2numerosb
 
 import android.R.attr.text
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Space
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Label
+import androidx.compose.material3.Button
+
+
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -30,7 +35,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.suma2numerosb.ui.theme.Suma2NumerosBTheme
 import androidx.compose.ui.graphics.Color
-
+import androidx.compose.ui.modifier.modifierLocalOf
 
 
 class MainActivity : ComponentActivity() {
@@ -105,22 +110,27 @@ keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number )
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number )
         )
 
-        Spacer(modifier= Modifier.height(8.dp))
-        Text(
-            text = "ingresa el Tercer Numero"
-
-        )
-        //cuadro de texto y etiqueta lebel para pedir  el segundo numero
-        OutlinedTextField(value =  numero3, onValueChange = {numero2= it},
-            label = {"Escribe el Numero 3"},
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number )
-        )
         Spacer(modifier= Modifier.height(16.dp))
-
 
         // boton con funcion
 
-    }
-}
+        Button(
+            onClick = {
+            val n1 =numero1.toDouble()?: 0.0
+            val n2 =numero2.toDouble()?: 0.0
+
+                resultado = (n1+n2).toString()
+            },
+            modifier = Modifier.fillMaxWidth()
+            ){
+            Text("Sumar Numeros")
+        }
+        Spacer(modifier= Modifier.height(16.dp))
+
+        Text("el resultado de la suma es :$resultado")
+
+
+    }}
+
 
 
